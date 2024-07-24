@@ -3,7 +3,7 @@
 class DataBase
 {
     private $host = 'localhost';
-    private $database = 'api-users';
+    private $database = 'api_users';
     private $username = 'root';
     private $password = '';
     private $conn;

@@ -1,5 +1,5 @@
 <?php
-
+require_once 'Base.php';
 class User extends Base
 {
     public $id;
@@ -9,7 +9,8 @@ class User extends Base
     public $created_at;
     public $update_at;
 
-    public $query_get_users = 'SELECT * FROM users where id=:id ';
+    public $query_get_user = 'SELECT * FROM users where id=:id ';
+    public $query_get_users = 'SELECT * FROM users';
 
     //Creating user
     public function create(): bool
