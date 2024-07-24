@@ -7,9 +7,9 @@ class User extends Base
     public $email;
     public $password;
     public $created_at;
-    public $update_at;
+    public $updated_at;
 
-    public $query_get_user = 'SELECT * FROM users where id=:id ';
+    public $query_get_user = 'SELECT * FROM users where id = :id ';
     public $query_get_users = 'SELECT * FROM users';
 
     //Creating user
@@ -37,16 +37,17 @@ class User extends Base
     //Update user
     public function update(): bool
     {
-        $query = 'UPDATE users SET name = :name, email = :email, password = :password, update_at = :update_at WHERE id = :id';
+        $query = 'UPDATE users SET name = :name, email = :email, updated_at = :updated_at WHERE id = :id';
 
         //Preparing statement
         $stmt = $this->conn->prepare($query);
 
         //Binding data
+        $stmt->bindParam(':id', $this->id);
         $stmt->bindParam(':name', $this->name);
         $stmt->bindParam(':email', $this->email);
-        $stmt->bindParam(':password', $this->password);
-        $stmt->bindParam(':update_at', $this->update_at);
+        $stmt->bindParam(':updated_at', $this->updated_at);
+
 
         if($stmt->execute()){
             return true;
