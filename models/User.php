@@ -15,7 +15,7 @@ class User extends Base
     //Creating user
     public function create(): bool
     {
-        $query = 'INSERT INTO users (name, email, password, created_at ) VALUES (:name, :email, :password, :created_at)';
+        $query = 'INSERT INTO users (name, email, password, created_at) VALUES (:name, :email, :password, :created_at)';
 
         //Preparing statement
         $stmt = $this->conn->prepare($query);
@@ -24,7 +24,7 @@ class User extends Base
         $stmt->bindParam(':name', $this->name);
         $stmt->bindParam(':email', $this->email);
         $stmt->bindParam(':password', $this->password);
-        $stmt->bindParam(':created_at', $this->created_at);
+        $stmt->bindParam(':$created_at', $this->created_at);
 
         if($stmt->execute()){
             return true;
@@ -34,6 +34,7 @@ class User extends Base
             return false;
         }
     }
+
     //Update user
     public function update(): bool
     {
