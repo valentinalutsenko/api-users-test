@@ -53,7 +53,6 @@ if ($email_exists && password_verify($data->password, $user->password)) {
         )
     );
 }
-
 else {
     http_response_code(401);
     echo json_encode(array("message" => "Ошибка входа"));
