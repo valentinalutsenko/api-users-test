@@ -81,8 +81,9 @@ class User extends Base
         $query = "SELECT id, name, password FROM users WHERE email = ? LIMIT 0,1";
 
         $stmt = $this->conn->prepare($query);
+        $this->email=htmlspecialchars(strip_tags($this->email));
 
-        $stmt->bindParam(':email', $this->email);
+        $stmt->bindParam(1, $this->email);
         $stmt->execute();
 
         $num = $stmt->rowCount();

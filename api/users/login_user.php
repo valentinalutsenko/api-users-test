@@ -4,6 +4,7 @@ header('Content-Type: application/json');
 header('Access-Control-Allow-Methods: POST');
 header('Access-Control-Allow-Headers: Access-Control-Allow-Headers, Content-Type, Access-Control-Allow-Methods, Authorization, X-Requested-With');
 
+require '../../vendor/autoload.php';
 include_once '../../config/Database.php';
 include_once '../../config/core.php';
 include_once '../../models/User.php';
