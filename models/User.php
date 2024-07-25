@@ -75,4 +75,27 @@ class User extends Base
             return false;
         }
     }
+
+    public function emailExists(): bool
+    {
+        $query = "SELECT id, name, password FROM users WHERE email = ? LIMIT 0,1";
+
+        $stmt = $this->conn->prepare($query);
+
+        $stmt->bindParam(':email', $this->email);
+        $stmt->execute();
+
+        $num = $stmt->rowCount();
+
+        if ($num > 0) {
+
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            $this->id = $row["id"];
+            $this->name = $row["name"];
+            $this->password = $row["password"];
+            return true;
+        }
+        return false;
+    }
 }
