@@ -18,8 +18,7 @@
     $data = json_decode(file_get_contents('php://input'));
     $user->name = htmlspecialchars(strip_tags($data->name));
     $user->email = htmlspecialchars(strip_tags($data->email));
-    $user->password =  md5($data->password);
-
+    $user->email = htmlspecialchars(strip_tags($data->password));
 
     //Create user
     if($user->create()){

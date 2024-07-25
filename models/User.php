@@ -26,6 +26,9 @@ class User extends Base
         $stmt->bindParam(':password', $this->password);
         $stmt->bindParam(':$created_at', $this->created_at);
 
+        $password_hash = password_hash($this->password, PASSWORD_BCRYPT);
+        $stmt->bindParam(":password", $password_hash);
+
         if($stmt->execute()){
             return true;
         }else{
